@@ -6,6 +6,9 @@ set wildmenu
 set showmatch
 set hlsearch
 
+" search for visually hightlighted text
+vnoremap <c-f> y<ESC>/<c-r>"<CR>   
+
 syntax enable
 set background=dark
 
@@ -62,6 +65,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'git://github.com/altercation/vim-colors-solarized.git'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin  'rdnetto/YCM-Generator'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
