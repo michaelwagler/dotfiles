@@ -5,6 +5,7 @@ set number
 set wildmenu
 set showmatch
 set hlsearch
+set tags=tags;
 
 " search for visually hightlighted text
 vnoremap <c-f> y<ESC>/<c-r>"<CR>   
@@ -49,7 +50,9 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 " YCM stuff
 let g:ycm_global_ycm_extra_conf = '/home/mwagler/.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = ['~/*']
-let g:ycm_collect_identifiers_from_tags_files=1
+
+" THIS EATS TONS OF MEMORY, SO DON'T SET IT TO 1
+let g:ycm_collect_identifiers_from_tags_files=0
 
 
 " set the runtime path to include Vundle and initialize
