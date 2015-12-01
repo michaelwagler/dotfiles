@@ -11,12 +11,14 @@ set tags=tags;
 vnoremap <c-f> y<ESC>/<c-r>"<CR>   
 
 syntax enable
-set background=dark
 
 colorscheme solarized
 
 set t_Co=256
 let g:solarized_termcolors=256
+
+" to turn off vim's background colour, so can just use the terminal background color
+hi Normal ctermbg=none 
 
 au BufEnter *.py set tw=79 colorcolumn=79 ts=4 sw=4 et
 autocmd BufWritePre *.py :%s/\s\+$//e
