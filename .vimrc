@@ -1,3 +1,6 @@
+
+set t_Co=256
+let g:solarized_termcolors=256
 syntax on
 set expandtab
 set tabstop=4
@@ -14,8 +17,8 @@ syntax enable
 
 colorscheme solarized
 
-set t_Co=256
-let g:solarized_termcolors=256
+" status line at bottom of file
+set statusline+=%F
 
 " to turn off vim's background colour, so can just use the terminal background color
 hi Normal ctermbg=none 
@@ -24,8 +27,20 @@ au BufEnter *.py set tw=79 colorcolumn=79 ts=4 sw=4 et
 autocmd BufWritePre *.py :%s/\s\+$//e
 
 " Pylint for vim
-autocmd FileType python set makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
+autocmd FileType python set makeprg=pylint\ --errors-only\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
 autocmd FileType python set errorformat=%f:%l:\ %m
+
+" Uncomment this to force 'make' call whenever saving
+"autocmd BufWritePost *.py make
+
+
+" use Tabs instead of spaces for c++
+autocmd FileType cpp set noexpandtab
+
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+
+" sintax highlighting for sip same as C
+ au BufRead,BufNewFile *.sip set filetype=c
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -57,6 +72,10 @@ let g:ycm_extra_conf_globlist = ['~/*']
 let g:ycm_collect_identifiers_from_tags_files=0
 
 
+let vim_markdown_preview_browser='Firefox'
+
+" NOTE: for Livedown to work, need to do 'npm install -g livedown' first!
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -71,6 +90,7 @@ Plugin 'rking/ag.vim'
 Plugin 'git://github.com/altercation/vim-colors-solarized.git'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin  'rdnetto/YCM-Generator'
+Plugin 'git://github.com/shime/vim-livedown.git'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
